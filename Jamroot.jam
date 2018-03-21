@@ -1006,6 +1006,10 @@ rule msparser-path ( properties * )
         {
             lib-location = "$(ProgramFilesLibs)\\Matrix Science\\Mascot Parser\\vs2013" ;
         }
+        else if [ feature.get-values <toolset-msvc:version> : $(properties) ] in "14.0"
+        {
+            lib-location = "$(ProgramFilesLibs)\\Matrix Science\\Mascot Parser\\vs2015" ;
+        }
         else
         {
             if ! $(.warn-once)

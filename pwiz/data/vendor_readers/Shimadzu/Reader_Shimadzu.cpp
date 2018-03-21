@@ -42,7 +42,7 @@ PWIZ_API_DECL std::string pwiz::msdata::Reader_Shimadzu::identify(const std::str
 #include "pwiz/data/msdata/Version.hpp"
 #include "pwiz/utility/misc/DateTime.hpp"
 #include "pwiz_aux/msrc/utility/vendor_api/Shimadzu/ShimadzuReader.hpp"
-//#include "SpectrumList_Shimadzu.hpp"
+#include "SpectrumList_Shimadzu.hpp"
 #include "ChromatogramList_Shimadzu.hpp"
 #include "pwiz/utility/misc/Std.hpp"
 
@@ -96,7 +96,7 @@ void fillInMetadata(const string& rawpath, Shimadzu::ShimadzuReaderPtr rawfile, 
     sourceFile->id = p.filename().string(utf8);
     sourceFile->name = p.filename().string(utf8);
     sourceFile->location = "file:///" + bfs::system_complete(p.branch_path()).string(utf8);
-    sourceFile->set(MS_Shimadzu_Biotech_nativeID_format);
+    sourceFile->set(MS_scan_number_only_nativeID_format);
     sourceFile->set(MS_mass_spectrometer_file_format);
     msd.fileDescription.sourceFilePtrs.push_back(sourceFile);
 
@@ -123,7 +123,7 @@ void fillInMetadata(const string& rawpath, Shimadzu::ShimadzuReaderPtr rawfile, 
     dpPwiz->processingMethods.back().set(MS_Conversion_to_mzML);
 
     // give ownership of dpPwiz to the SpectrumList (and ChromatogramList)
-    //SpectrumList_Shimadzu* sl = dynamic_cast<SpectrumList_Shimadzu*>(msd.run.spectrumListPtr.get());
+    SpectrumList_Shimadzu* sl = dynamic_cast<SpectrumList_Shimadzu*>(msd.run.spectrumListPtr.get());
     ChromatogramList_Shimadzu* cl = dynamic_cast<ChromatogramList_Shimadzu*>(msd.run.chromatogramListPtr.get());
     //if (sl) sl->setDataProcessingPtr(dpPwiz);
     if (cl) cl->setDataProcessingPtr(dpPwiz);
@@ -153,9 +153,9 @@ void Reader_Shimadzu::read(const string& filename,
 
     Shimadzu::ShimadzuReaderPtr dataReader(Shimadzu::ShimadzuReader::create(filename));
 
-    //shared_ptr<SpectrumList_Shimadzu> sl(new SpectrumList_Shimadzu(result, dataReader));
+    shared_ptr<SpectrumList_Shimadzu> sl(new SpectrumList_Shimadzu(result, dataReader, config));
     shared_ptr<ChromatogramList_Shimadzu> cl(new ChromatogramList_Shimadzu(dataReader));
-    //result.run.spectrumListPtr = sl;
+    result.run.spectrumListPtr = sl;
     result.run.chromatogramListPtr = cl;
 
     fillInMetadata(filename, dataReader, result);

@@ -59,7 +59,17 @@ rule vendor-api-usage-requirements ( properties * )
         {
             result += <library>$(PWIZ_ROOT_PATH)/pwiz/utility/misc//pwiz_utility_misc ;
         }
-        result += <assembly>$(dll_location)/DataReader.dll ;
+        result += <assembly-dependency>$(dll_location)/DataReader.dll ;
+        result += <assembly-dependency>$(dll_location)/CLFIO32.dll ;
+        result += <assembly-dependency>$(dll_location)/CRHAKEI2.dll ;
+        result += <assembly-dependency>$(dll_location)/IOModuleQTFL.dll ;
+        result += <assembly-dependency>$(dll_location)/MassCalcWrapObject.dll ;
+        result += <assembly-dependency>$(dll_location)/MSMSDBCntl.dll ;
+        result += <assembly-dependency>$(dll_location)/PeakItgLSS.dll ;
+        result += <assembly>$(dll_location)/../DualProbeInterfaceParametersCS.dll ;
+        result += <assembly>$(dll_location)/../Google.Protobuf.dll ;
+        result += <assembly>$(dll_location)/../QTFLProtoCS.dll ;
+        result += <assembly>$(dll_location)/../Shimadzu.LabSolutions.IO.IoModule.dll ;
     }
     return $(result) ;
 }
@@ -111,7 +121,17 @@ rule install-requirements ( properties * )
     local dll_location = [ shimadzu-dll-location $(API_PATH) : $(properties) ] ;
     if $(dll_location)
     {
-        result += <source>$(dll_location)\\DataReader.dll ;
+        result += <source>$(dll_location)/DataReader.dll ;
+        result += <source>$(dll_location)/CLFIO32.dll ;
+        result += <source>$(dll_location)/CRHAKEI2.dll ;
+        result += <source>$(dll_location)/IOModuleQTFL.dll ;
+        result += <source>$(dll_location)/MassCalcWrapObject.dll ;
+        result += <source>$(dll_location)/MSMSDBCntl.dll ;
+        result += <source>$(dll_location)/PeakItgLSS.dll ;
+        result += <source>$(dll_location)/../DualProbeInterfaceParametersCS.dll ;
+        result += <source>$(dll_location)/../Google.Protobuf.dll ;
+        result += <source>$(dll_location)/../QTFLProtoCS.dll ;
+        result += <source>$(dll_location)/../Shimadzu.LabSolutions.IO.IoModule.dll ;
         result += <source>EULA.SFCS ;
     }
     return $(result) ;

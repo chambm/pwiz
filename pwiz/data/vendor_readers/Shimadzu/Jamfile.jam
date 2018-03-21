@@ -88,7 +88,7 @@ rule vendor-api-usage-requirements ( properties * )
 lib pwiz_reader_shimadzu
     : # sources
         Reader_Shimadzu.cpp
-        #SpectrumList_Shimadzu.cpp
+        SpectrumList_Shimadzu.cpp
         ChromatogramList_Shimadzu.cpp
     : # requirements
         <library>$(PWIZ_ROOT_PATH)/pwiz/data/msdata//pwiz_data_msdata
