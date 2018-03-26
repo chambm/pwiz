@@ -39,9 +39,16 @@ namespace Shimadzu {
 
 struct PWIZ_API_DECL TimeRange { double start, end; };
 
+PWIZ_API_DECL enum Polarity
+{
+    Positive = 0,
+    Negative = 1,
+    Undefined = 2
+};
 
 struct PWIZ_API_DECL SRMTransition
 {
+    short id;
     short channel;
     short event;
     short segment;
@@ -72,6 +79,13 @@ struct PWIZ_API_DECL Spectrum
 {
     virtual double getScanTime() const = 0;
     virtual int getMSLevel() const = 0;
+    virtual Polarity getPolarity() const = 0;
+
+    virtual double getSumY() const = 0;
+    virtual double getBasePeakX() const = 0;
+    virtual double getBasePeakY() const = 0;
+    virtual double getMinX() const = 0;
+    virtual double getMaxX() const = 0;
 
     virtual bool getHasIsolationInfo() const = 0;
     virtual void getIsolationInfo(double& centerMz, double& lowerLimit, double& upperLimit) const = 0;

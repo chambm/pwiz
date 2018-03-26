@@ -59,7 +59,7 @@ rule vendor-api-usage-requirements ( properties * )
         {
             result += <library>$(PWIZ_ROOT_PATH)/pwiz/utility/misc//pwiz_utility_misc ;
         }
-        result += <assembly-dependency>$(dll_location)/DataReader.dll ;
+        result += <assembly>$(dll_location)/DataReader.dll ;
         result += <assembly-dependency>$(dll_location)/CLFIO32.dll ;
         result += <assembly-dependency>$(dll_location)/CRHAKEI2.dll ;
         result += <assembly-dependency>$(dll_location)/IOModuleQTFL.dll ;
