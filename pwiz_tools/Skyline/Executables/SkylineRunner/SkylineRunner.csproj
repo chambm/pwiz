@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SkylineRunner</RootNamespace>
     <AssemblyName>SkylineRunner</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ManifestCertificateThumbprint>B226686C5D57EC6D3C850F6DD0334C32C39A5AAC</ManifestCertificateThumbprint>
     <ManifestKeyFile>SkylineRunner_TemporaryKey.pfx</ManifestKeyFile>
