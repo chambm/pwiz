@@ -1729,8 +1729,8 @@ struct HandlerBinaryDataArray : public HandlerParamContainer
                 if (!dataProcessingRef.empty())
                     binaryDataArray->dataProcessingPtr = DataProcessingPtr(new DataProcessing(dataProcessingRef));
 
-                    getAttribute(attributes, "encodedLength", encodedLength_, NoXMLUnescape);
-                    getAttribute(attributes, "arrayLength", arrayLength_, NoXMLUnescape, defaultArrayLength);
+                getAttribute(attributes, "encodedLength", encodedLength_, NoXMLUnescape);
+                getAttribute(attributes, "arrayLength", arrayLength_, NoXMLUnescape, defaultArrayLength);
 
                 return Status::Ok;
             }
